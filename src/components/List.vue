@@ -50,6 +50,7 @@ import "vant/lib/popup/style";
 import "vant/lib/field/style";
 import "vant/lib/button/style";
 import "vant/lib/cell-group/style";
+import "vant/lib/toast/style";
 
 export default {
   name: "list",
@@ -79,6 +80,22 @@ export default {
     },
 
     addList() {
+      if(this.taskName === ''){
+         this.$toast.fail({
+           mask: true,
+           message:'<div style="width:120px;height:70px"><p>兄dei,</p><p>做任务要有个名字~</p></div>',
+           type: 'html'
+         });
+         return
+      }
+        if(this.expNum === ''){
+         this.$toast.fail({
+           mask: true,
+           message:'<div style="width:130px;height:90px"><p>兄dei,</p><p>做任务要有个经验，不然就白做啦~</p></div>',
+           type: 'html'
+         });
+         return
+      }
       let task = {
         id: Date.parse(new Date()),
         name: this.taskName,
